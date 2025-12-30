@@ -1,22 +1,30 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import './index.css'  // Global styles for your application
-import { RouterProvider } from "react-router-dom";  // Import RouterProvider to use the router
-import { router } from "./routes";  // Import the router configuration
-import { StoreProvider } from './hooks/useGlobalReducer';  // Import the StoreProvider for global state management
+/*
+ * NOTA IMPORTANTE:
+ * No estoy usando useGlobalReducer de la plantilla.
+ * He construido Context + Flux + Provider desde cero para practicar arquitectura profesional
+ * y tambien ir aprendiendo por mi cuenta.
+ *  Todo el resto de la app sigue el mismo objetivo de aprendizaje: mantener código limpio, 
+ * modular, reutilizable y escalable.
+ */
+
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";  // Estilos globales
+import { RouterProvider } from "react-router-dom";  // Router de la app
+import { router } from "./routes";  // Configuración de rutas
+import ContextProvider from "./js/store/context";  // Nuestro Provider global
 
 const Main = () => {
     return (
-        <React.StrictMode>  
-            {/* Provide global state to all components */}
-            <StoreProvider> 
-                {/* Set up routing for the application */} 
-                <RouterProvider router={router}>
-                </RouterProvider>
-            </StoreProvider>
+        <React.StrictMode>
+            {/* Provider global: inyecta store y actions a toda la app */}
+            <ContextProvider>
+                {/* RouterProvider: maneja todas las rutas definidas */}
+                <RouterProvider router={router} />
+            </ContextProvider>
         </React.StrictMode>
     );
-}
+};
 
-// Render the Main component into the root DOM element.
-ReactDOM.createRoot(document.getElementById('root')).render(<Main />)
+// Renderiza la app en el root del HTML
+ReactDOM.createRoot(document.getElementById("root")).render(<Main />);
