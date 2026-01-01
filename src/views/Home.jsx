@@ -1,24 +1,41 @@
-export const Home = () => {
-    return (
-        <section
-            id="home"
-            className="container-fluid py-5"
-        >
-            <div
-                id="home-hero"
-                className="container text-center"
-            >
-                <h1 id="home-title" className="display-4 fw-bold">
-                    Harry Potter Universe
-                </h1>
+// src/js/components/Home.jsx
+import React from "react";
 
-                <p
-                    id="home-subtitle"
-                    className="lead mt-3"
-                >
-                    Characters, spells, houses and creatures from the wizarding world
-                </p>
-            </div>
-        </section>
-    );
+const Home = () => {
+  return (
+    <main className="home">
+      
+      {/* HERO */}
+      <section className="home-hero">
+        <div className="home-hero-content">
+
+          <h1 className="home-title">
+            Bienvenido a <span className="home-title-accent">Hogwarts</span>
+          </h1>
+
+          <p className="home-subtitle">
+            Descubre la magia del mundo mágico en un solo lugar
+          </p>
+
+          {/* Texto oculto / revelable */}
+          <span className="home-secret-text">
+            Wingardium Leviosa no es solo un hechizo, es conocimiento.
+          </span>
+
+        </div>
+
+        {/* Imagen icónica */}
+        <div className="home-hero-visual">
+          <img
+            src="/assets/images/sombrero.png"
+            alt="Sombrero Seleccionador"
+            className="home-hero-image"
+          />
+        </div>
+      </section>
+
+    </main>
+  );
 };
+
+export default Home;
