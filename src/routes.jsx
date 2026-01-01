@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 
 import { Layout } from "./views/Layout";
-import { Home } from "./views/Home";
+import  Home  from "./views/Home";
 
 // Definimos el router de la aplicación
 export const router = createBrowserRouter([

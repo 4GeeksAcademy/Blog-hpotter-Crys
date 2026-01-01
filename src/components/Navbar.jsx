@@ -66,7 +66,7 @@ const Navbar = () => {
             </button>
 
             {/* Dropdown preview de favoritos */}
-            <div className="dropdown">
+            <div className="dropdown" data-bs-auto-close="outside">
               <button
                 className="btn btn-outline-light dropdown-toggle"
                 type="button"
@@ -106,7 +106,10 @@ const Navbar = () => {
                     </Link>
                     <button
                       className="btn btn-sm btn-link text-danger"
-                      onClick={() => handleRemoveFavorite(f.id)}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleRemoveFavorite(f.id);
+                      }}
                       aria-label={`Eliminar ${f.title} de favoritos`}
                     >
                       <i className="fa-solid fa-trash"></i>
