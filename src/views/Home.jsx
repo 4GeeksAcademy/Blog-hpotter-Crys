@@ -1,5 +1,5 @@
-// src/js/views/Home.jsx
 import React, { useContext, useEffect } from "react";
+// RUTA CORREGIDA: sube de views, entra a js/store
 import { Context } from "../js/store/context.jsx";
 import { useNavigate } from "react-router-dom";
 
@@ -8,89 +8,65 @@ const Home = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        actions.loadCharacters();
-        actions.loadStaff();
-        actions.loadSpells();
+        actions.loadAllData();
     }, []);
 
-    // DEBUG TEMPORAL
-    console.log("Characters:", store.characters);
-    console.log("Staff:", store.staff);
-    console.log("Spells:", store.spells);
-
-    // Función para marcar/desmarcar favorito
-    const toggleFavorite = (item, type) => {
-        actions.toggleFavorite(item, type);
-    };
-
-    // Render de carrusel
-    const renderCarousel = (items, type) => (
-        <div className="carousel-section">
-            <hr className="carousel-divider" /> {/* Línea mágica para CSS después */}
-            <h2 className="carousel-title">{type}</h2>
-            <div className="carousel-container">
-                {items.map((item) => (
-                    <div className="card" key={item.id}>
-                        <img
-                            src={item.image || "/assets/images/placeholder.png"}
-                            alt={item.name}
-                            className="card-image"
-                        />
-                        <div className="card-info">
-                            <div className="card-name">Nombre: {item.name}</div>
-                            {item.house && <div className="card-house">Casa: {item.house}</div>}
+    const renderCarousel = (title, items, type) => (
+        <div className="carousel-section mb-5 mt-4">
+            <h2 className="carousel-title px-4 mb-3">{title}</h2>
+            <div className="carousel-container d-flex flex-row flex-nowrap gap-3 px-4 pb-4">
+                {items.length > 0 ? items.map((item) => (
+                    <div className="card h-potter-card" key={item.id}>
+                        <div className="card-img-container">
+                            <img src={item.image} className="card-img-top" alt={item.name} />
                         </div>
-                        <div className="card-actions">
-                            <button
-                                className="favorite-btn"
-                                onClick={() => toggleFavorite(item, type)}
-                            >
-                                {store.favorites.some(fav => fav.id === item.id) ? "❤️" : "🤍"}
-                            </button>
-                            <button
-                                className="details-btn"
-                                onClick={() => navigate(`/details/${type}/${item.id}`)}
-                            >
-                                Detalles
-                            </button>
+                        <div className="card-body d-flex flex-column justify-content-between">
+                            <h5 className="card-title text-truncate">{item.name}</h5>
+                            <div className="d-flex justify-content-between align-items-center mt-3">
+                                <button 
+                                    className="btn btn-outline-info btn-sm"
+                                    onClick={() => navigate(`/details/${type}/${item.id}`)}
+                                >
+                                    Detalles
+                                </button>
+                                <button 
+                                    className="btn btn-favorite"
+                                    onClick={() => actions.toggleFavorite(item)}
+                                >
+                                    {store.favorites.some(fav => fav.id === item.id) ? "❤️" : "🤍"}
+                                </button>
+                            </div>
                         </div>
                     </div>
-                ))}
+                )) : (
+                    <div className="text-white ps-4">Cargando pociones y hechizos...</div>
+                )}
             </div>
         </div>
     );
 
     return (
-        <main className="home">
-
-            {/* HERO */}
-            <section className="home-hero">
-                <div className="home-hero-content">
-                    <h1 className="home-title">
-                        Bienvenido a <span className="home-title-accent">Hogwarts</span>
-                    </h1>
-                    <p className="home-subtitle">
-                        Descubre la magia del mundo mágico en un solo lugar
-                    </p>
-                    <span className="home-secret-text">
-                        Wingardium Leviosa no es solo un hechizo, es conocimiento.
-                    </span>
+        <div className="home-main">
+            {/* HERO SECTION */}
+            <section className="home-hero d-flex align-items-center justify-content-around p-5">
+                <div className="hero-text">
+                    <h1 className="display-3 fw-bold">Bienvenido a <span className="text-accent">Hogwarts</span></h1>
+                    <p className="lead">Explora la librería prohibida y descubre todos los secretos.</p>
                 </div>
-                <div className="home-hero-visual">
-                    <img
-                        src="/assets/images/sombrero.png"
-                        alt="Sombrero Seleccionador"
-                        className="home-hero-image"
-                    />
+                <div className="hero-img-wrapper">
+                    <img src="/assets/images/sombrero.png" alt="Sombrero" className="hero-floating-img" />
                 </div>
             </section>
 
             {/* CARRUSELES */}
-            {renderCarousel(store.characters, "Personajes")}
-            {renderCarousel(store.staff, "Profesores")}
-            {renderCarousel(store.spells, "Hechizos")}
-
-        </main>
+            <div className="content-wrapper">
+                {renderCarousel("📚 Libros", store.books, "books")}
+                {renderCarousel("🎬 Películas", store.movies, "movies")}
+                {renderCarousel("🧙 Personajes", store.characters, "characters")}
+                {renderCarousel("🧪 Pociones", store.potions, "potions")}
+                {renderCarousel("✨ Hechizos", store.spells, "spells")}
+            </div>
+        </div>
     );
 };
 

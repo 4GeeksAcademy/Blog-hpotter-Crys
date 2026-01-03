@@ -1,134 +1,130 @@
-// src/js/components/Navbar.jsx
 import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Context } from "../js/store/context.jsx"; // Import correcto y estático
+import { Context } from "../js/store/context.jsx"; // Mantenemos la ruta que nos funcionó en Home
 
 const Navbar = () => {
-  const { store, actions } = useContext(Context) || {};
-  const favorites = (store && store.favorites) || [];
-  const navigate = useNavigate();
+    const { store, actions } = useContext(Context);
+    // Nos aseguramos de que favorites siempre sea un array para evitar errores de .length
+    const favorites = store?.favorites || [];
+    const navigate = useNavigate();
 
-  const goToFavoritesPage = () => navigate("/favorites");
+    return (
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top border-bottom border-warning">
+            <div className="container">
+                {/* LOGO */}
+                <Link to="/" className="navbar-brand d-flex align-items-center gap-2">
+                    <img
+                        src="/assets/images/logo-hat.png"
+                        alt="Hogwarts Logo"
+                        width="40"
+                        height="40"
+                        className="d-inline-block align-text-top"
+                    />
+                    <span className="fw-bold h-potter-title" style={{ letterSpacing: "1px" }}>
+                        HOGWARTS DB
+                    </span>
+                </Link>
 
-  const handleRemoveFavorite = (id) => {
-    if (!actions || !actions.removeFavorite) return;
-    actions.removeFavorite(id);
-  };
+                {/* BOTÓN MÓVIL */}
+                <button
+                    className="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#mainNavbar"
+                >
+                    <span className="navbar-toggler-icon" />
+                </button>
 
-  return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div className="container">
-        {/* Logo + Nombre: clickeables, llevan a Home */}
-        <Link to="/" className="navbar-brand d-flex align-items-center gap-2">
-          <img
-            src="/assets/images/logo-hat.png"
-            alt="Sombrero mágico"
-            width="36"
-            height="36"
-            className="d-inline-block align-text-top"
-            id="nav-logo"
-          />
-          <span id="nav-title" className="fw-bold">Hogwarts</span>
-        </Link>
+                {/* CONTENIDO DERECHA */}
+                <div className="collapse navbar-collapse" id="mainNavbar">
+                    <div className="d-flex align-items-center ms-auto gap-3 mt-3 mt-lg-0">
+                        
+                        {/* DROPDOWN DE FAVORITOS */}
+                        <div className="dropdown">
+                            <button
+                                className="btn btn-warning dropdown-toggle d-flex align-items-center gap-2 shadow"
+                                type="button"
+                                id="favoritesDropdown"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false"
+                            >
+                                <i className="fa-solid fa-hat-wizard"></i>
+                                <span>Favoritos</span>
+                                <span className="badge bg-dark text-warning ms-1">
+                                    {favorites.length}
+                                </span>
+                            </button>
 
-        {/* Botón colapsable para móvil */}
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#mainNavbar"
-          aria-controls="mainNavbar"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon" />
-        </button>
-
-        {/* Contenido colapsable: favoritos */}
-        <div className="collapse navbar-collapse" id="mainNavbar">
-          <div className="d-flex align-items-center ms-auto gap-2">
-            {/* Botón favoritos */}
-            <button
-              type="button"
-              className="btn btn-outline-warning position-relative"
-              onClick={goToFavoritesPage}
-              aria-label={`Favoritos, ${favorites.length} elementos`}
-            >
-              <i className="fa-solid fa-heart"></i>
-              <span className="visually-hidden">Favoritos</span>
-              <span
-                id="favorites-count"
-                className="badge bg-danger position-absolute top-0 start-100 translate-middle"
-                style={{ fontSize: "0.65rem" }}
-              >
-                {favorites.length}
-              </span>
-            </button>
-
-            {/* Dropdown preview de favoritos */}
-            <div className="dropdown" data-bs-auto-close="outside">
-              <button
-                className="btn btn-outline-light dropdown-toggle"
-                type="button"
-                id="favoritesPreviewBtn"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-                aria-haspopup="true"
-              >
-                <i className="fa-solid fa-list"></i>
-                <span className="ms-1">Favoritos</span>
-              </button>
-
-              <ul
-                className="dropdown-menu dropdown-menu-end p-2"
-                aria-labelledby="favoritesPreviewBtn"
-                style={{ minWidth: 280 }}
-              >
-                <li className="dropdown-header">Favoritos ({favorites.length})</li>
-                {favorites.length === 0 && <li className="px-3 text-muted">Sin favoritos aún</li>}
-                {favorites.slice(0, 5).map((f) => (
-                  <li key={f.id} className="d-flex align-items-center justify-content-between px-2 py-1">
-                    <Link
-                      to={`/details/${f.type}/${encodeURIComponent(f.id)}`}
-                      className="text-decoration-none text-dark flex-grow-1"
-                    >
-                      <div className="d-flex align-items-center gap-2">
-                        <img
-                          src={f.image || "/assets/images/placeholder.png"}
-                          alt={f.title}
-                          style={{ width: 36, height: 36, objectFit: "cover", borderRadius: 6 }}
-                        />
-                        <div className="small">
-                          <div className="fw-semibold">{f.title}</div>
-                          <div className="text-muted">{f.subtitle || f.type}</div>
+                            <ul
+                                className="dropdown-menu dropdown-menu-end p-2 shadow-lg"
+                                aria-labelledby="favoritesDropdown"
+                                style={{ minWidth: "300px", backgroundColor: "#2b2b2b" }}
+                            >
+                                <li className="dropdown-header text-warning fw-bold border-bottom border-secondary mb-2">
+                                    TUS HECHIZOS GUARDADOS
+                                </li>
+                                
+                                {favorites.length === 0 ? (
+                                    <li className="text-center py-3 text-muted">
+                                        <em>El caldero está vacío...</em>
+                                    </li>
+                                ) : (
+                                    favorites.map((f) => (
+                                        <li key={f.id} className="d-flex align-items-center justify-content-between px-2 py-2 hover-magic">
+                                            <div 
+                                                className="d-flex align-items-center gap-2 flex-grow-1 cursor-pointer"
+                                                onClick={() => navigate(`/details/${f.type}/${f.id}`)}
+                                                style={{ cursor: "pointer" }}
+                                            >
+                                                <img
+                                                    src={f.image}
+                                                    alt={f.name}
+                                                    style={{ width: "40px", height: "40px", objectFit: "cover", borderRadius: "4px" }}
+                                                />
+                                                <div className="d-flex flex-column">
+                                                    <span className="text-white small fw-bold text-truncate" style={{ maxWidth: "150px" }}>
+                                                        {f.name}
+                                                    </span>
+                                                    <span className="text-muted" style={{ fontSize: "0.7rem" }}>
+                                                        {f.type.toUpperCase()}
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            
+                                            {/* BOTÓN BASURA: Usa toggleFavorite para eliminar */}
+                                            <button
+                                                className="btn btn-sm text-danger ms-2"
+                                                onClick={(e) => {
+                                                    e.stopPropagation(); // Evita que el click abra los detalles
+                                                    actions.toggleFavorite(f);
+                                                }}
+                                            >
+                                                <i className="fa-solid fa-trash-can"></i>
+                                            </button>
+                                        </li>
+                                    ))
+                                )}
+                                
+                                {favorites.length > 0 && (
+                                    <>
+                                        <li><hr className="dropdown-divider border-secondary" /></li>
+                                        <li>
+                                            <button 
+                                                className="btn btn-outline-warning btn-sm w-100 mt-1"
+                                                onClick={() => navigate("/favorites")}
+                                            >
+                                                Ver todos los favoritos
+                                            </button>
+                                        </li>
+                                    </>
+                                )}
+                            </ul>
                         </div>
-                      </div>
-                    </Link>
-                    <button
-                      className="btn btn-sm btn-link text-danger"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleRemoveFavorite(f.id);
-                      }}
-                      aria-label={`Eliminar ${f.title} de favoritos`}
-                    >
-                      <i className="fa-solid fa-trash"></i>
-                    </button>
-                  </li>
-                ))}
-                <li><hr className="dropdown-divider" /></li>
-                <li className="px-2">
-                  <button className="btn btn-sm btn-primary w-100" onClick={goToFavoritesPage}>
-                    Ver todos los favoritos
-                  </button>
-                </li>
-              </ul>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </nav>
-  );
+        </nav>
+    );
 };
 
 export default Navbar;

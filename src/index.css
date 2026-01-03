@@ -1,0 +1,90 @@
+/* ============================================================
+   SECCIÓN 0: IMPORTACIÓN DE FUENTES 
+   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Spectral:ital,wght@0,400;0,700;0,800;1,400&display=swap');
+
+/* ============================================================
+   SECCIÓN 1: VARIABLES GLOBALES (Design System)
+   ============================================================ */
+:root {
+    /* Paleta Principal */
+    --gold-primary: #ecb939;       /* Dorado Harry Potter */
+    --gold-glow: rgba(236, 185, 57, 0.3);
+    --red-accent: #740001;        /* Rojo profundo Gryffindor */
+    
+    /* Paleta de Fondos */
+    --bg-dark: #0a0a0c;           
+    --bg-gradient: radial-gradient(circle at center, #1a1a2e 0%, #0a0a0c 100%);
+    --card-bg: rgba(25, 25, 27, 0.9);
+    
+    /* Tipografía Refinada */
+    --font-magic: 'Spectral', serif;
+    --font-standard: 'Montserrat', sans-serif;
+
+    /* Efectos y Transiciones */
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --glass-border: 1px solid rgba(255, 255, 255, 0.1);
+    --magic-shadow: 0 0 20px rgba(236, 185, 57, 0.15);
+}
+
+/* ============================================================
+   SECCIÓN 2: RESET Y BASE GENERAL (Universal)
+   ============================================================ */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: var(--bg-dark);
+    background-image: var(--bg-gradient);
+    background-attachment: fixed;
+    color: #ffffff;
+    font-family: var(--font-standard);
+    min-height: 100vh;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Selección de texto mágica */
+::selection {
+    background-color: var(--gold-primary);
+    color: var(--bg-dark);
+}
+
+/* Barras de Scroll Personalizadas */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-dark);
+}
+
+::-webkit-scrollbar-thumb {
+    background: #2a2a2a;
+    border-radius: 10px;
+    border: 2px solid var(--bg-dark);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--gold-primary);
+}
+
+/* Títulos Globales Corregidos */
+h1, h2, h3, .h-magic {
+    font-family: var(--font-magic);
+    font-weight: 800;
+    font-style: italic;
+    letter-spacing: -1px;
+    color: var(--gold-primary); /* Color base dorado para títulos */
+}
+
+/* Helper para texto dorado degradado */
+.text-gradient-gold {
+    background: linear-gradient(to bottom, #fde08d 0%, #ecb939 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
