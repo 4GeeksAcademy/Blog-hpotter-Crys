@@ -1,40 +1,20 @@
 import React, { useContext, useEffect, useRef } from "react";
 import { Context } from "../js/store/context.jsx";
 import { useNavigate } from "react-router-dom";
+import { getSafeImage } from "../js/store/getSafeImage";
 
-// defaults cards
-import d1 from "../imagenes/default/d1.png";
-import d2 from "../imagenes/default/d2.png";
-import d3 from "../imagenes/default/d3.png";
-import d4 from "../imagenes/default/d4.png";
-
-// hero images
+// HERO IMAGES (FIX RUTA)
 import mapa1 from "../imagenes/home/mapa1.png";
 import mapa2 from "../imagenes/home/mapa2.png";
 
 // ================================================================
-// COMPONENTE INTERNO: CARRUSEL INDIVIDUAL
+// COMPONENTE INTERNO: CARRUSEL INDIVIDUAL (ORIGINAL)
 // ================================================================
 const MagicCarousel = ({ title, items, type, isLast }) => {
     const navigate = useNavigate();
     const { store, actions } = useContext(Context);
     const scrollContainerRef = useRef(null);
 
-    // --- Lógica de Imagen Segura (FIX REAL) ---
-    const getSafeImage = (item) => {
-        if (item?.image && item.image.trim() !== "") return item.image;
-
-        const defaults = [d1, d2, d3, d4];
-
-        const index =
-            typeof item?.id === "number"
-                ? Math.abs(item.id) % defaults.length
-                : Math.floor(Math.random() * defaults.length);
-
-        return defaults[index];
-    };
-
-    // --- Scroll ---
     const scroll = (direction) => {
         const container = scrollContainerRef.current;
         if (container) {
@@ -51,24 +31,16 @@ const MagicCarousel = ({ title, items, type, isLast }) => {
     };
 
     return (
-        <>
+        <React.Fragment>
             <section className="magic-carousel-wrapper">
                 <div className="section-header">
                     <h2 className="carousel-title">{title}</h2>
                 </div>
 
-                <button
-                    className="scroll-btn btn-left"
-                    onClick={() => scroll("left")}
-                    aria-label="Anterior"
-                >
+                <button className="scroll-btn btn-left" onClick={() => scroll("left")}>
                     &#8249;
                 </button>
-                <button
-                    className="scroll-btn btn-right"
-                    onClick={() => scroll("right")}
-                    aria-label="Siguiente"
-                >
+                <button className="scroll-btn btn-right" onClick={() => scroll("right")}>
                     &#8250;
                 </button>
 
@@ -107,14 +79,7 @@ const MagicCarousel = ({ title, items, type, isLast }) => {
                                             {store.favorites.some(
                                                 (fav) => fav.id === item.id
                                             ) ? (
-                                                <span
-                                                    style={{
-                                                        color: "#e3342f",
-                                                        textShadow: "0 0 8px #e3342f",
-                                                    }}
-                                                >
-                                                    ♥
-                                                </span>
+                                                <span style={{ color: "#e3342f", textShadow: "0 0 8px #e3342f" }}>♥</span>
                                             ) : (
                                                 <span style={{ color: "#888" }}>♡</span>
                                             )}
@@ -146,12 +111,12 @@ const MagicCarousel = ({ title, items, type, isLast }) => {
                     <div className="separator-icon">❖</div>
                 </div>
             )}
-        </>
+        </React.Fragment>
     );
 };
 
 // ================================================================
-// HOME
+// HOME (ORIGINAL)
 // ================================================================
 const Home = () => {
     const { store, actions } = useContext(Context);
@@ -205,11 +170,7 @@ const Home = () => {
                 </div>
 
                 <div className="hero-map" ref={mapRef}>
-                    <img
-                        src={mapa1}
-                        alt="Mapa oculto"
-                        className="map-hidden"
-                    />
+                    <img src={mapa1} alt="Mapa oculto" className="map-hidden" />
                     <div className="map-revealed">
                         <img src={mapa2} alt="Mapa revelado" />
                     </div>

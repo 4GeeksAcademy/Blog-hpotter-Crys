@@ -1,6 +1,10 @@
 import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../js/store/context.jsx";
+import { getSafeImage } from "../js/store/getSafeImage";
+
+// LOGO FIX
+import logo from "../imagenes/navbar/logo1.png";
 
 const Navbar = () => {
     const { store, actions } = useContext(Context);
@@ -10,11 +14,10 @@ const Navbar = () => {
     return (
         <nav className="navbar navbar-expand-lg sticky-top main-nav-container">
             <div className="container">
-                {/* LOGO Y TITULO */}
                 <Link to="/" className="navbar-brand d-flex align-items-center gap-3 magic-brand">
                     <div className="logo-wrapper">
                         <img
-                            src="src/imagenes/navbar/logo1.png"
+                            src={logo}
                             alt="Hogwarts Logo"
                             id="nav-logo"
                             className="rounded-circle"
@@ -36,14 +39,11 @@ const Navbar = () => {
 
                 <div className="collapse navbar-collapse" id="mainNavbar">
                     <div className="d-flex align-items-center ms-auto gap-3 mt-3 mt-lg-0">
-                      
                         <div className="dropdown">
                             <button
                                 className="btn-magic-neon dropdown-toggle d-flex align-items-center gap-2"
                                 type="button"
-                                id="favoritesDropdown"
                                 data-bs-toggle="dropdown"
-                                aria-expanded="false"
                             >
                                 <i className="fa-solid fa-bolt-lightning icon-electric"></i>
                                 <span className="d-none d-md-inline">Favoritos</span>
@@ -52,7 +52,8 @@ const Navbar = () => {
 
                             <ul className="dropdown-menu dropdown-menu-end glass-dropdown p-0 shadow-lg">
                                 <li className="dropdown-header text-gradient-gold fw-bold p-3 border-bottom border-secondary">
-                                    <i className="fa-solid fa-book-sparkles me-2"></i>MI ALMACÉN MÁGICO
+                                    <i className="fa-solid fa-book-sparkles me-2"></i>
+                                    MI ALMACÉN MÁGICO
                                 </li>
 
                                 <div className="fav-list-scroll" style={{ maxHeight: "350px", overflowY: "auto" }}>
@@ -69,12 +70,21 @@ const Navbar = () => {
                                                     onClick={() => navigate(`/details/${f.type}/${f.id}`)}
                                                     style={{ cursor: "pointer" }}
                                                 >
-                                                    <img src={f.image} alt={f.name} className="fav-thumb" />
+                                                    <img
+                                                        src={getSafeImage(f)}
+                                                        alt={f.name}
+                                                        className="fav-thumb"
+                                                        onError={(e) => {
+                                                            e.currentTarget.onerror = null;
+                                                            e.currentTarget.src = getSafeImage(f);
+                                                        }}
+                                                    />
                                                     <div className="d-flex flex-column">
                                                         <span className="fav-name text-truncate">{f.name}</span>
                                                         <span className="fav-type">{f.type.toUpperCase()}</span>
                                                     </div>
                                                 </div>
+
                                                 <button
                                                     className="btn-remove-fav"
                                                     onClick={(e) => {
@@ -94,7 +104,8 @@ const Navbar = () => {
                                         className="btn-view-all-magic w-100"
                                         onClick={() => navigate("/favorites")}
                                     >
-                                        Ver todo el Grimorio <i className="fa-solid fa-arrow-right-long ms-2"></i>
+                                        Ver todo el Grimorio
+                                        <i className="fa-solid fa-arrow-right-long ms-2"></i>
                                     </button>
                                 </li>
                             </ul>
