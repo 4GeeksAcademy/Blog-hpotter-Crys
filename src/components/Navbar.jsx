@@ -14,7 +14,7 @@ const Navbar = () => {
                 <Link to="/" className="navbar-brand d-flex align-items-center gap-3 magic-brand">
                     <div className="logo-wrapper">
                         <img
-                            src="src/imagenes/navbar/Logo (2).jpg"
+                            src="src/imagenes/navbar/logo1.png"
                             alt="Hogwarts Logo"
                             id="nav-logo"
                             className="rounded-circle"

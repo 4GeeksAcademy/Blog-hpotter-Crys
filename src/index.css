@@ -102,19 +102,11 @@ h1, h2, h3, .h-magic {
 }
 
 /* --- LOGO Y TÍTULO --- */
-.logo-wrapper {
-    padding: 2px;
-    background: linear-gradient(45deg, var(--gold-primary), var(--red-accent));
-    border-radius: 50%;
-    box-shadow: 0 0 15px var(--gold-glow);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+
 
 #nav-logo {
-    width: 45px;
-    height: 45px;
+    width: 60px;
+    height: auto;
     transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -201,6 +193,37 @@ h1, h2, h3, .h-magic {
     transform: scale(1.3) rotate(15deg);
     color: #ff1a1a;
 }
+.empty-msg {
+    color: rgba(236, 185, 57, 0.7); /* dorado suave */
+    font-size: 0.9rem;
+
+}
+.fav-name {
+    color: rgba(236, 185, 57, 0.9); /* más legible */
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.fav-type {
+    color: rgba(236, 185, 57, 0.6); /* secundario */
+    font-size: 0.7rem;
+    letter-spacing: 0.05em;
+}
+.fav-item-row:hover .fav-name {
+    color: var(--gold-primary);
+}
+
+.fav-item-row:hover .fav-type {
+    color: rgba(236, 185, 57, 0.85);
+}
+.fav-item-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s;
+}
+
 
 /* --- BOTÓN FINAL GRIMORIO --- */
 .dropdown-footer-magic {
