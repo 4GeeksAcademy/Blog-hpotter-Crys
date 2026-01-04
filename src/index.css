@@ -223,6 +223,15 @@ h1, h2, h3, .h-magic {
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     transition: all 0.3s;
 }
+.btn-remove-fav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-remove-fav {
+    margin-left: 10px;
+}
 
 
 /* --- BOTÓN FINAL GRIMORIO --- */
@@ -246,3 +255,5 @@ h1, h2, h3, .h-magic {
     box-shadow: 0 0 20px var(--red-accent);
     letter-spacing: 1px;
 }
+
+
