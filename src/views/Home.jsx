@@ -108,7 +108,7 @@ const MagicCarousel = ({ title, items, type, isLast }) => {
 
             {!isLast && (
                 <div className="magic-separator">
-                    <div className="separator-icon">❖</div>
+                    <div className="separator-icon"></div>
                 </div>
             )}
         </React.Fragment>
