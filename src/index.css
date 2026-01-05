@@ -637,3 +637,102 @@ h1, h2, h3, .h-magic {
     .h-potter-card{ flex: 0 0 75%; min-width: 150px; }
     .carousel-container{ padding: 10px 5% 30px 5%; }
 }
+
+
+/* ============================================================
+   SECCIÓN FAVORITES PAGE (Optimización Profesional)
+   ============================================================ */
+
+/* Wrapper principal para dar contexto de posicionamiento */
+.favorites-page-wrapper {
+    position: relative;
+    z-index: 10;
+}
+
+/* 1. Botón de Retorno Moderno (Glass Style) */
+.btn-back-home {
+    background: rgba(20, 20, 25, 0.6);
+    color: var(--gold-primary);
+    border: 1px solid rgba(236, 185, 57, 0.3);
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-family: var(--font-standard);
+    font-weight: 600;
+    font-size: 0.9rem;
+    backdrop-filter: blur(10px);
+    transition: var(--transition-smooth);
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-back-home:hover {
+    background: var(--gold-primary);
+    color: var(--bg-dark);
+    box-shadow: 0 0 15px rgba(236, 185, 57, 0.4);
+    transform: translateX(-5px); /* Efecto sutil de movimiento */
+}
+
+/* 2. Cabecera y Textos */
+.fav-title-magic {
+    text-shadow: 0 0 20px rgba(236, 185, 57, 0.2);
+    letter-spacing: -1px;
+}
+
+/* Corrección de visibilidad del texto descriptivo */
+.fav-subtitle {
+    color: #e0e0e0; /* Blanco hueso para máxima legibilidad */
+    font-family: var(--font-magic);
+    font-size: 1.3rem;
+    font-style: italic;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.fav-header-line {
+    width: 60px;
+    height: 3px;
+    background: var(--gold-primary);
+    border-radius: 2px;
+    box-shadow: 0 0 10px var(--gold-primary);
+}
+
+/* 3. Panel de Estado Vacío (Glassmorphism) */
+.glass-panel {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+}
+
+/* Animación suave para la varita en estado vacío */
+.floating-anim {
+    animation: floating 3s ease-in-out infinite;
+}
+
+@keyframes floating {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
+}
+
+/* 4. Botón de eliminar (Trash icon) */
+.delete-btn-anim {
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    opacity: 0.7;
+}
+
+.delete-btn-anim:hover {
+    transform: scale(1.2) rotate(10deg);
+    opacity: 1;
+    color: #ff4d4d !important;
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+}
+
+/* Asegurar que las cards en Grid tengan la misma altura visual que en el carrusel */
+.fav-category-section .h-potter-card {
+    min-height: 420px; /* Altura mínima consistente */
+}
