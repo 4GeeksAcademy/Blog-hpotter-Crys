@@ -85,10 +85,10 @@ export const FavoritesPage = () => {
 
                             <div className="d-flex align-items-center mb-4 mt-4">
                                 <h3 className="text-accent text-uppercase m-0 h-magic" style={{ fontSize: '1.8rem' }}>
-                                    {cat === 'books' ? '📚 Libros Guardados' : 
-                                     cat === 'movies' ? '🎬 Películas Preferidas' : 
-                                     cat === 'characters' ? '🧙 Personajes Aliados' : 
-                                     cat === 'potions' ? '🧪 Pociones en Reserva' : '✨ Hechizos Dominados'}
+                                    {cat === 'books' ? '🕮  Grimorios Guardados' : 
+                                     cat === 'movies' ? '✵ Películas Preferidas' : 
+                                     cat === 'characters' ? '⛧ Personajes Aliados' : 
+                                     cat === 'potions' ? '⚗ Pociones en Reserva' : '☿ Hechizos Dominados'}
                                 </h3>
                             </div>
                             
