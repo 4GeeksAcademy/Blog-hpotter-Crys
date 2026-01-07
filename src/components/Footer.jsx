@@ -2,7 +2,6 @@ import React from "react";
 
 export const Footer = () => (
   <footer className="footer-magic-container">
-    {/* Línea superior con el punto mágico (Sección de separación) */}
     <div className="footer-separator">
       <div className="magic-line"></div>
       <div className="magic-dot"></div>

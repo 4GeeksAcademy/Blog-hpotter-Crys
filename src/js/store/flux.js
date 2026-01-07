@@ -1,7 +1,7 @@
 const getState = ({ getStore, getActions, setStore }) => {
     const API_URL = "https://api.potterdb.com/v1";
 
-    // Imágenes por defecto (Asegúrate de tenerlas en public/assets/images/defaults/)
+   
     const DEFAULT_IMAGES = [
         "/assets/images/defaults/magic1.jpg",
         "/assets/images/defaults/magic2.jpg",
@@ -24,7 +24,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             favorites: [],
         },
         actions: {
-            // Acción para favoritos: Detecta si ya está y lo quita, o lo agrega
+            
             toggleFavorite: (item) => {
                 const store = getStore();
                 const exists = store.favorites.find(fav => fav.id === item.id);
@@ -35,7 +35,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                 setStore({ favorites: newFavorites });
             },
 
-            // Fetch centralizado y limpieza de datos
+          
             loadResource: async (resource) => {
                 try {
                     const response = await fetch(`${API_URL}/${resource}`);

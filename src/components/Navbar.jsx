@@ -2,8 +2,6 @@ import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../js/store/context.jsx";
 import { getSafeImage } from "../js/store/getSafeImage";
-
-// LOGO FIX
 import logo from "../imagenes/navbar/logo1.png";
 
 const Navbar = () => {

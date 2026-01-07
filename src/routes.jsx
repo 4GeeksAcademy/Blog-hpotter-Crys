@@ -1,16 +1,15 @@
 import { createBrowserRouter } from "react-router-dom";
 
-// Importamos el Layout
-import { Layout } from "./views/Layout";
-// Importamos las vistas (Asegúrate de que los nombres de archivo coincidan)
-import Home from "./views/Home";
-import Details from "./views/Details"; // La que acabamos de crear
-import { FavoritesPage } from "./views/FavoritesPage"; // La que haremos a continuación
 
-// Definimos el router de la aplicación
+import { Layout } from "./views/Layout";
+import Home from "./views/Home";
+import Details from "./views/Details";
+import { FavoritesPage } from "./views/FavoritesPage";
+
+
 export const router = createBrowserRouter([
     {
-        // Ruta raíz que envuelve toda la app con el Navbar y Footer
+
         path: "/",
         element: <Layout />,
         errorElement: (
@@ -21,20 +20,19 @@ export const router = createBrowserRouter([
                 <a href="/" className="btn btn-warning mt-3">Volver al Castillo</a>
             </div>
         ),
-        // Rutas hijas que se inyectan en el <Outlet /> del Layout
+
         children: [
             {
                 index: true,
                 element: <Home />
             },
             {
-                // :type será 'books', 'movies', 'characters', etc.
-                // :id será el ID único que viene de PotterDB
+
                 path: "details/:type/:id",
                 element: <Details />
             },
             {
-                // Ruta para la página dedicada a ver todos los favoritos
+
                 path: "favorites",
                 element: <FavoritesPage />
             }

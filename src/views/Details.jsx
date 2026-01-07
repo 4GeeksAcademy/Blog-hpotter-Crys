@@ -56,7 +56,7 @@ const Details = () => {
                         </div>
                     </div>
 
-                    {/* COLUMNA INFORMACIÓN */}
+                   
                     <div className="col-md-7 details-info-section p-4 p-lg-5 d-flex flex-column justify-content-center">
                         <div className="details-content-box">
                             <div className="d-flex justify-content-between align-items-start mb-3">
@@ -77,7 +77,7 @@ const Details = () => {
                                 {item.summary || item.description || "Este elemento del mundo mágico guarda secretos que aún no han sido revelados en la base de datos."}
                             </p>
 
-                            {/* DATOS DINÁMICOS */}
+                            
                             <div className="details-stats-grid row g-3">
                                 {item.author && <div className="col-6"><div className="stat-card"><strong>Autor:</strong> {item.author}</div></div>}
                                 {item.release_date && <div className="col-6"><div className="stat-card"><strong>Lanzamiento:</strong> {item.release_date}</div></div>}

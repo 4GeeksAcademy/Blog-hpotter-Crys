@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { Context } from "../js/store/context.jsx";
 import { useNavigate } from "react-router-dom";
-// IMPORTANTE: Importamos la utilidad para imagenes seguras
 import { getSafeImage } from "../js/store/getSafeImage";
 
 import baulImage from "../imagenes/favoritospageempty/Baul.png";
@@ -12,7 +11,7 @@ export const FavoritesPage = () => {
     const { favorites } = store;
     const navigate = useNavigate();
 
-    // Agrupamos favoritos
+    
     const groupedFavorites = favorites.reduce((acc, item) => {
         if (!acc[item.type]) acc[item.type] = [];
         acc[item.type].push(item);
@@ -24,7 +23,7 @@ export const FavoritesPage = () => {
     return (
         <div className="favorites-page-wrapper container py-5 min-vh-100 position-relative">
             
-            {/* BOTÓN DE RETORNO FLOTANTE (UX MODERNA) */}
+            
             <div className="position-absolute top-0 start-0 mt-4 ms-3 d-none d-md-block">
                 <button 
                     onClick={() => navigate("/")} 
@@ -34,30 +33,30 @@ export const FavoritesPage = () => {
                     <i className="fa-solid fa-arrow-left me-2"></i> Inicio
                 </button>
             </div>
-            {/* Versión móvil del botón (más compacto) */}
+           
             <div className="d-md-none mb-4">
                  <button onClick={() => navigate("/")} className="btn-back-home w-100">
                     <i className="fa-solid fa-arrow-left me-2"></i> Regresar a Inicio
                 </button>
             </div>
 
-            {/* CABECERA CREATIVA */}
+            
             <header className="fav-header text-center mb-5 mt-4">
                 <h1 className="display-4 fw-bold text-warning fav-title-magic">
                     Tu Grimorio Personal
                 </h1>
-                {/* Corregido: Color visible y tipografía mejorada */}
+                
                 <p className="lead fav-subtitle mt-3">
                     "La magia no solo se encuentra, se guarda." <br />
                     <span className="small text-white-50">Aquí residen los secretos, personajes y artes oscuras que has descubierto.</span>
                 </p>
                 
-                {/* Pequeño separador visual para la cabecera */}
+                
                 <div className="fav-header-line mx-auto mt-4"></div>
             </header>
 
             {favorites.length === 0 ? (
-                /* ESTADO VACÍO ENAMORABLE */
+                
                 <div className="empty-favorites text-center py-5 shadow-sm rounded glass-panel">
                     <img 
                         src={baulImage}
@@ -75,12 +74,12 @@ export const FavoritesPage = () => {
                     </button>
                 </div>
             ) : (
-                /* SECCIONES DINÁMICAS POR CATEGORÍA */
+              
                 <div className="fav-content">
                     {categories.map((cat) => (
                         <section key={cat} className="mb-5 fav-category-section">
                             
-                            {/* SEPARADOR MÁGICO (Como en la Home) */}
+                            
                             <div className="magic-separator"></div>
 
                             <div className="d-flex align-items-center mb-4 mt-4">
@@ -92,7 +91,7 @@ export const FavoritesPage = () => {
                                 </h3>
                             </div>
                             
-                            {/* GRID RESPONSIVE MEJORADO */}
+                            
                             <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
                                 {groupedFavorites[cat].map((item) => (
                                     <div className="col" key={item.id}>

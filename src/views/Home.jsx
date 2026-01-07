@@ -3,13 +3,11 @@ import { Context } from "../js/store/context.jsx";
 import { useNavigate } from "react-router-dom";
 import { getSafeImage } from "../js/store/getSafeImage";
 
-// HERO IMAGES (FIX RUTA)
+
 import mapa1 from "../imagenes/home/mapa1.png";
 import mapa2 from "../imagenes/home/mapa2.png";
 
-// ================================================================
-// COMPONENTE INTERNO: CARRUSEL INDIVIDUAL (ORIGINAL)
-// ================================================================
+
 const MagicCarousel = ({ title, items, type, isLast }) => {
     const navigate = useNavigate();
     const { store, actions } = useContext(Context);
@@ -115,9 +113,7 @@ const MagicCarousel = ({ title, items, type, isLast }) => {
     );
 };
 
-// ================================================================
-// HOME (ORIGINAL)
-// ================================================================
+
 const Home = () => {
     const { store, actions } = useContext(Context);
     const mapRef = useRef(null);

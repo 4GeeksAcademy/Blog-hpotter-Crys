@@ -1,35 +1,28 @@
-/* ============================================================
-   SECCIÓN 0: IMPORTACIÓN DE FUENTES 
-   ============================================================ */
+/* Importacion de fuentes en css */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Spectral:ital,wght@0,400;0,700;0,800;1,400&display=swap');
 
-/* ============================================================
-   SECCIÓN 1: VARIABLES GLOBALES (Design System)
-   ============================================================ */
+/*Variables globales */
 :root {
-    /* Paleta Principal */
-    --gold-primary: #ecb939;       /* Dorado Harry Potter */
+   
+    --gold-primary: #ecb939;      
     --gold-glow: rgba(236, 185, 57, 0.3);
-    --red-accent: #740001;        /* Rojo profundo Gryffindor */
+    --red-accent: #740001;        
     
-    /* Paleta de Fondos */
+    
     --bg-dark: #0a0a0c;           
     --bg-gradient: radial-gradient(circle at center, #1a1a2e 0%, #0a0a0c 100%);
     --card-bg: rgba(25, 25, 27, 0.9);
     
-    /* Tipografía Refinada */
+    
     --font-magic: 'Spectral', serif;
     --font-standard: 'Montserrat', sans-serif;
 
-    /* Efectos y Transiciones */
     --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     --glass-border: 1px solid rgba(255, 255, 255, 0.1);
     --magic-shadow: 0 0 20px rgba(236, 185, 57, 0.15);
 }
 
-/* ============================================================
-   SECCIÓN 2: RESET Y BASE GENERAL (Universal)
-   ============================================================ */
+/* Base General*/
 * {
     box-sizing: border-box;
     margin: 0;
@@ -47,13 +40,13 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-/* Selección de texto mágica */
+
 ::selection {
     background-color: var(--gold-primary);
     color: var(--bg-dark);
 }
 
-/* Barras de Scroll Personalizadas */
+/* Barras de Scroll  */
 ::-webkit-scrollbar {
     width: 8px;
 }
@@ -72,16 +65,16 @@ body {
     background: var(--gold-primary);
 }
 
-/* Títulos Globales Corregidos */
+/* Títulos Globales  */
 h1, h2, h3, .h-magic {
     font-family: var(--font-magic);
     font-weight: 800;
     font-style: italic;
     letter-spacing: -1px;
-    color: var(--gold-primary); /* Color base dorado para títulos */
+    color: var(--gold-primary); 
 }
 
-/* Helper para texto dorado degradado */
+
 .text-gradient-gold {
     background: linear-gradient(to bottom, #fde08d 0%, #ecb939 100%);
     -webkit-background-clip: text;
@@ -89,11 +82,9 @@ h1, h2, h3, .h-magic {
     display: inline-block;
 }
 
-/* ============================================================
-   SECCIÓN 3: NAVBAR - WIZARDING NEXUS (ESTILO PROFESIONAL)
-   ============================================================ */
+/* navbar */
 .main-nav-container {
-    /* Gradiente sutil para evitar el negro plano */
+  
     background: linear-gradient(to bottom, rgba(20, 20, 25, 0.95), rgba(10, 10, 12, 0.98)) !important;
     backdrop-filter: blur(15px) saturate(150%);
     border-bottom: 2px solid var(--gold-primary) !important;
@@ -101,7 +92,7 @@ h1, h2, h3, .h-magic {
     padding: 12px 0;
 }
 
-/* --- LOGO Y TÍTULO --- */
+/*Logo y Titulo */
 
 
 #nav-logo {
@@ -128,7 +119,7 @@ h1, h2, h3, .h-magic {
     letter-spacing: 2px;
 }
 
-/* --- BOTÓN NEÓN FAVORITOS --- */
+/*Boton de favoritos */
 .btn-magic-neon {
     background: rgba(236, 185, 57, 0.05);
     border: 1px solid var(--gold-primary);
@@ -155,7 +146,7 @@ h1, h2, h3, .h-magic {
     50% { filter: drop-shadow(0 0 10px var(--gold-primary)); transform: scale(1.2); }
 }
 
-/* --- DROPDOWN GLASSMORPHISM --- */
+/*Dropdown */
 .glass-dropdown {
     background: linear-gradient(160deg, #1a1a1e, #0a0a0c) !important;
     border: 1px solid var(--gold-primary) !important;
@@ -234,7 +225,7 @@ h1, h2, h3, .h-magic {
 }
 
 
-/* --- BOTÓN FINAL GRIMORIO --- */
+/* Boton final del dropdown*/
 .dropdown-footer-magic {
     background: rgba(0, 0, 0, 0.3);
 }
@@ -257,9 +248,7 @@ h1, h2, h3, .h-magic {
 }
 
 
-/* ============================================================
-   HERO – MAPA MÁGICO (CON BRILLO RADIANTE DETRÁS)
-   ============================================================ */
+/* Hero- MAPA importante  */
 
 .home-hero {
     min-height: 85vh;
@@ -269,12 +258,12 @@ h1, h2, h3, .h-magic {
     gap: 0.5rem;
     padding: 4rem 3rem;
     position: relative;
-    overflow: hidden; /* Importante para que el brillo no desborde */
+    overflow: hidden; 
 }
 
 .hero-text {
     max-width: 520px;
-    z-index: 2; /* Texto sobre el brillo */
+    z-index: 2; 
 }
 
 .hero-title {
@@ -317,20 +306,20 @@ h1, h2, h3, .h-magic {
     50% { transform: translateX(6px); }
 }
 
-/* --- MAPA Y BRILLO MÁGICO --- */
+/* Importante el Mapa controlado por js*/
 .hero-map {
     position: relative;
     width: clamp(360px, 48vw, 680px);
     aspect-ratio: 16 / 9;
     cursor: pointer;
-    /* Variables CSS controladas por JS */
+    
     --x: 90%;
     --y: 90%;
     --r: 0px;
     z-index: 1;
 }
 
-/* NUEVO: Brillo Difuminado Detrás */
+
 .hero-map::before {
     content: '';
     position: absolute;
@@ -388,9 +377,7 @@ h1, h2, h3, .h-magic {
 }
 
 
-/* ============================================================
-   SECCIÓN 3: COMPONENTES MÁGICOS & CARRUSELES (AJUSTADA)
-   ============================================================ */
+/* Componentes y carrusel  */
 .magic-carousel-wrapper{
     position: relative;
     width: 100%;
@@ -398,11 +385,10 @@ h1, h2, h3, .h-magic {
     box-sizing: border-box;
 }
 
-/* Contenedor del carrusel: padding lateral mayor para que
-   las cards no toquen el viewport. scroll-padding asegura snap correcto */
+/* Contenedor del carrusel */
 .carousel-container{
     display: flex;
-    gap: 1rem; /* un poco menos para que no parezcan amontonadas */
+    gap: 1rem; 
     overflow-x: auto;
     overflow-y: hidden;
     padding: 30px 7% 40px 7%;
@@ -418,7 +404,7 @@ h1, h2, h3, .h-magic {
 
 .section-header{
     padding: 0 7%;
-    margin-bottom: 1rem; /* reducido para acercar secciones */
+    margin-bottom: 1rem; 
 }
 
 .carousel-title{
@@ -436,7 +422,7 @@ h1, h2, h3, .h-magic {
     font-family: var(--font-magic);
 }
 
-/* Icono plano vectorial (sin emoji). Reemplaza background-image por tu SVG */
+
 .carousel-icon{
     width: 28px;
     height: 28px;
@@ -445,18 +431,16 @@ h1, h2, h3, .h-magic {
     background-repeat: no-repeat;
     background-position: center;
     flex: 0 0 28px;
-    /* estilo plano y sin filtros para que sea un vector limpio */
     filter: none;
 }
 
 
 
-/* --- ESTILO CARD CON BRILLO DIFUMINADO --- */
 .h-potter-card{
-    /* ahora añadimos márgenes laterales para que no choquen con el padding del contenedor */
+    
     flex: 0 0 calc(25% - 2rem);
-    min-width: 220px;            /* evita que la card se haga demasiado pequeña */
-    margin: 0 0.6rem;           /* separación lateral entre cards y con los bordes */
+    min-width: 220px;            
+    margin: 0 0.6rem;           
     background: var(--card-bg);
     border: 1px solid rgba(255,255,255,0.08);
     border-radius: 12px;
@@ -470,7 +454,7 @@ h1, h2, h3, .h-magic {
     box-sizing: border-box;
 }
 
-/* Hover más suave y consistente */
+
 .h-potter-card:hover{
     transform: translateY(-10px);
     border-color: rgba(236,185,57,0.6);
@@ -479,7 +463,7 @@ h1, h2, h3, .h-magic {
                 inset 0 0 15px rgba(236,185,57,0.05);
 }
 
-/* Imagen de la card */
+
 .card-img-container{
     width: 100%;
     aspect-ratio: 1/1;
@@ -497,7 +481,7 @@ h1, h2, h3, .h-magic {
     transform: scale(1.08);
 }
 
-/* Info y título de la card */
+
 .card-info-body{
     padding: 1.2rem;
     display: flex;
@@ -556,7 +540,7 @@ h1, h2, h3, .h-magic {
     filter: drop-shadow(0 0 5px rgba(0,0,0,0.5));
 }
 
-/* --- SEPARADOR MÁGICO (Estrella plana/vectorial) --- */
+/* Separador */
 .magic-separator{
     position: relative;
     width: 88%;
@@ -565,12 +549,11 @@ h1, h2, h3, .h-magic {
         transparent 0%,
         rgba(236,185,57,0.35) 50%,
         transparent 100%);
-    margin: 1.5rem auto; /* reducido para acercar secciones */
+    margin: 1.5rem auto; 
     overflow: visible;
 }
 
-/* Reemplazamos el emoji por un elemento circular/estelar plano (vector-like)
-   Si prefieres un SVG real, usa background-image con tu SVG. */
+
 .magic-separator::after{
     content: '';
     position: absolute;
@@ -589,7 +572,7 @@ h1, h2, h3, .h-magic {
     animation: shootingStar 6s linear infinite;
 }
 
-/* animación tal cual, mueve el elemento plano a lo largo de la línea */
+
 @keyframes shootingStar {
     0%   { left: 0%;   opacity: 0; transform: translate(-50%, -50%) rotate(0deg); }
     10%  { opacity: 1; }
@@ -597,7 +580,7 @@ h1, h2, h3, .h-magic {
     100% { left: 100%; opacity: 0; transform: translate(-50%, -50%) rotate(360deg); }
 }
 
-/* Flechas de Navegación — ajustadas para no superponerse a los laterales */
+
 .scroll-btn{
     position: absolute;
     top: 55%;
@@ -639,17 +622,15 @@ h1, h2, h3, .h-magic {
 }
 
 
-/* ============================================================
-   SECCIÓN FAVORITES PAGE (Optimización Profesional)
-   ============================================================ */
+/* FavoritesPage */
 
-/* Wrapper principal para dar contexto de posicionamiento */
+
 .favorites-page-wrapper {
     position: relative;
     z-index: 10;
 }
 
-/* 1. Botón de Retorno Moderno (Glass Style) */
+/* Botón de Retorno */
 .btn-back-home {
     background: rgba(20, 20, 25, 0.6);
     color: var(--gold-primary);
@@ -675,13 +656,13 @@ h1, h2, h3, .h-magic {
     transform: translateX(-5px); /* Efecto sutil de movimiento */
 }
 
-/* 2. Cabecera y Textos */
+
 .fav-title-magic {
     text-shadow: 0 0 20px rgba(236, 185, 57, 0.2);
     letter-spacing: -1px;
 }
 
-/* Corrección de visibilidad del texto descriptivo */
+
 .fav-subtitle {
     color: #e0e0e0; /* Blanco hueso para máxima legibilidad */
     font-family: var(--font-magic);
@@ -701,14 +682,13 @@ h1, h2, h3, .h-magic {
     box-shadow: 0 0 10px var(--gold-primary);
 }
 
-/* 3. Panel de Estado Vacío (Glassmorphism) */
+
 .glass-panel {
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(5px);
 }
 
-/* Animación suave para la varita en estado vacío */
 .floating-anim {
     animation: floating 3s ease-in-out infinite;
 }
@@ -719,7 +699,7 @@ h1, h2, h3, .h-magic {
     100% { transform: translateY(0px); }
 }
 
-/* 4. Botón de eliminar (Trash icon) */
+
 .delete-btn-anim {
     transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     opacity: 0.7;
@@ -737,16 +717,14 @@ h1, h2, h3, .h-magic {
     min-height: 420px; /* Altura mínima consistente */
 }
 
-/* ============================================================
-   SECCIÓN DETAILS - WIZARDING INSIGHTS
-   ============================================================ */
+/* Details */
 
 .details-master-wrapper {
     background: var(--bg-gradient);
     min-height: 90vh;
 }
 
-/* Glass Card Principal */
+
 .details-glass-card {
     background: var(--card-bg);
     border: var(--glass-border);
@@ -754,7 +732,7 @@ h1, h2, h3, .h-magic {
     backdrop-filter: blur(10px);
 }
 
-/* Contenedor de Imagen Controlado */
+
 .details-image-section {
     position: relative;
     overflow: hidden;
@@ -765,14 +743,14 @@ h1, h2, h3, .h-magic {
 .details-img-container {
     width: 100%;
     height: 100%;
-    max-height: 600px; /* Limite de altura para pantallas grandes */
+    max-height: 600px; 
     padding: 20px;
 }
 
 .details-img-fixed {
     width: 100%;
     height: 100%;
-    object-fit: contain; /* Mantiene la proporción sin recortar */
+    object-fit: contain; 
     filter: drop-shadow(0 0 15px rgba(0,0,0,0.8));
     transition: var(--transition-smooth);
 }
@@ -781,7 +759,7 @@ h1, h2, h3, .h-magic {
     transform: scale(1.03);
 }
 
-/* Badge y Textos */
+
 .badge-magic {
     background: rgba(236, 185, 57, 0.1);
     color: var(--gold-primary);
@@ -801,7 +779,7 @@ h1, h2, h3, .h-magic {
     padding-left: 20px;
 }
 
-/* Grid de Stats */
+
 .stat-card {
     background: rgba(255,255,255,0.03);
     padding: 10px 15px;
@@ -814,7 +792,7 @@ h1, h2, h3, .h-magic {
     color: var(--gold-primary);
 }
 
-/* BOTÓN CORAZÓN NEÓN */
+/* Boton corazon */
 .btn-fav-circle {
     width: 50px;
     height: 50px;
@@ -862,19 +840,17 @@ h1, h2, h3, .h-magic {
     }
 }
 
-/* ============================================================
-   SECCIÓN 5: FOOTER - THE FINAL SPELL
-   ============================================================ */
+/* Footer personal */
 
 .footer-magic-container {
     background: linear-gradient(to top, #050505 0%, transparent 100%);
     padding-top: 3rem;
     position: relative;
     border-top: 1px solid rgba(255, 255, 255, 0.05);
-    margin-top: 5rem; /* Separación del contenido principal */
+    margin-top: 5rem;
 }
 
-/* Separador Mágico de firma */
+
 .footer-separator {
     display: flex;
     align-items: center;
@@ -903,7 +879,7 @@ h1, h2, h3, .h-magic {
     50% { transform: scale(1.5); opacity: 0.5; }
 }
 
-/* Tipografía y Enlaces */
+
 .footer-copyright {
     font-family: var(--font-standard);
     font-size: 0.95rem;
@@ -944,7 +920,7 @@ h1, h2, h3, .h-magic {
     border-radius: 4px;
 }
 
-/* Corazón animado */
+
 .heart-magic {
     display: inline-block;
     color: var(--red-accent);
