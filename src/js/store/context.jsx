@@ -1,3 +1,9 @@
+/*NOTA IMPORTANTE:
+ No estoy usando useGlobalReducer de la plantilla.
+He construido Context + Flux + Provider desde cero para practicar arquitectura
+  y tambien ir aprendiendo por mi cuenta. */
+
+
 import React, { createContext, useState, useEffect } from "react";
 import getState from "./flux";
 

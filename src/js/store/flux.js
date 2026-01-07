@@ -1,3 +1,9 @@
+/*NOTA IMPORTANTE:
+ No estoy usando useGlobalReducer de la plantilla.
+He construido Context + Flux + Provider desde cero para practicar arquitectura
+  y tambien ir aprendiendo por mi cuenta. */
+
+
 const getState = ({ getStore, getActions, setStore }) => {
     const API_URL = "https://api.potterdb.com/v1";
 

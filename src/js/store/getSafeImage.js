@@ -1,3 +1,6 @@
+/*centralizacion de imagenes para las card que notraen imagen default desde la api*/
+
+
 import d1 from "../../imagenes/default/d1.png";
 import d2 from "../../imagenes/default/d2.png";
 import d3 from "../../imagenes/default/d3.png";
